@@ -54,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const flyerImages = [
     "image/Flyer/REVISEFIT.jpeg",
     "image/Flyer/メナードフェイシャルサロン.jpeg",
-    "image/Flyer/ミートストックチラシ.jpeg,",
   ];
 
   const homepageImages = ["image/CHERRY BLOSSOM.png", "image/portfolio.png"];
