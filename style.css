@@ -1,0 +1,893 @@
+/* ===== GENERAL STYLES ===== */
+:root {
+  --main-text-color: #282e33;
+  --bg-color: #f8f8f8;
+  --accent-color: #778999;
+  --white-color: #fff;
+}
+
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  margin: 0;
+  padding: 0;
+  color: var(--main-text-color);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+section {
+  padding: 6rem 2rem;
+}
+
+/* ===== HEADER & HERO ===== */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--white-color);
+  text-align: center;
+  position: relative;
+  transition: top 0.3s ease-in-out;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("image/TOP2.jpeg");
+  background-size: cover;
+  background-position: center;
+  z-index: -50;
+}
+
+.hero-content h1 {
+  font-size: 5rem;
+  margin: 0;
+}
+.hero-content p {
+  font-size: 1.5rem;
+  letter-spacing: 5px;
+}
+
+.menu {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 20px;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+}
+
+.menu--hidden {
+  transform: translateY(-150%);
+}
+
+.menu a {
+  color: var(--main-text-color); /* 下層ページ用に文字色を変更 */
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: 700;
+  position: relative; /* 下線のための基準点 */
+  padding-bottom: 5px;
+}
+
+.menu a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-color);
+  transform: translateX(-50%);
+  transition: width 0.3s;
+}
+.menu a:hover::after {
+  width: 100%;
+}
+
+#bg-video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  transform: translateX(-50%) translateY(-50%);
+  background-size: cover;
+}
+
+/* ===== WORK SECTION (TOP Page) ===== */
+.work-section {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.work-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 8rem;
+}
+.work-item.reverse {
+  flex-direction: row-reverse;
+}
+.work-description {
+  flex: 1;
+}
+
+.work-title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.work-description h3 {
+  font-size: 1.8rem;
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.view-all-link {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s;
+  flex-shrink: 0;
+  padding-left: 1rem;
+}
+
+.view-all-link:hover {
+  color: #505b66;
+  text-decoration: underline;
+}
+
+/* --- Slider Styles (アニメーション対応版) --- */
+/* --- Slider Styles (シンプル版) --- */
+.work-image-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.image-box {
+  width: 100%;
+  position: relative;
+}
+
+/* ★★★ この部分を差し替えてください ★★★ */
+.slide-image {
+  width: 100%;
+  height: auto; /* 高さは自動調整 */
+  aspect-ratio: 1 / 1; /* 横長の比率を維持。正方形にしたい場合は 1 / 1 */
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  /* アニメーションの設定 */
+  transition: transform 0.4s ease, filter 0.4s ease;
+  /* デフォルトで白黒にする */
+  filter: grayscale(100%);
+}
+
+.slide-image:hover {
+  /* カラーに戻す */
+  filter: grayscale(0);
+  /* 少し拡大する */
+  transform: scale(1.05);
+}
+/* ★★★ ここまで ★★★ */
+
+/* 表示されている画像（activeクラス）のスタイル */
+.slide-image.active {
+  opacity: 1;
+}
+
+/* ★ホバー時のアニメーション */
+.slide-image.active:hover {
+  /* カラーに戻す */
+  filter: grayscale(0);
+  /* 少し拡大する */
+  transform: scale(1.05);
+  /* （もし少しだけ透明にしたい場合は、下の行のコメントを外してください） */
+  /* opacity: 0.9; */
+}
+
+.nav-arrow {
+  background: transparent;
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.3s, color 0.3s;
+  margin-top: 1rem;
+}
+.nav-arrow:hover {
+  background: var(--accent-color);
+  color: var(--white-color);
+}
+
+.description-area {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--white-color);
+  border-left: 4px solid var(--accent-color);
+  min-height: 100px;
+  transition: all 0.3s;
+  display: none;
+}
+.description-item {
+  margin-bottom: 0.8rem;
+}
+.description-item:last-child {
+  margin-bottom: 0;
+}
+.item-label {
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--accent-color);
+}
+.item-text {
+  margin: 0;
+}
+
+.layout-image-large .work-description {
+  flex: 1;
+}
+.layout-image-large .work-image-container {
+  flex: 1.2;
+}
+
+/* ===== ABOUT SECTION ===== */
+.about-section {
+  background: var(--white-color);
+}
+.about-content {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.profile-pic-about {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  filter: grayscale(100%);
+}
+.about-text h3 {
+  font-size: 1.8rem;
+}
+.about-text h4 {
+  margin-top: 2rem;
+}
+/* ===== シンプルになったコンタクト部分のスタイル ===== */
+
+.contact-simple p {
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  color: #ccc; /* 説明文の文字を少しだけ控えめな白に */
+}
+
+.contact-button {
+  display: inline-block;
+  /* 背景透明、枠線ありのゴーストボタンスタイル */
+  background-color: transparent;
+  border: 2px solid var(--accent-color);
+  color: var(--white-color); /* 文字色は白 */
+
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.3s;
+}
+
+.contact-button:hover {
+  /* ホバー時は背景色を塗りつぶす */
+  background-color: var(--accent-color);
+  color: var(--white-color);
+}
+
+/* ===== コンタクトボタンを横並びにするスタイル ===== */
+.contact-buttons-wrapper {
+  display: flex;
+  justify-content: center; /* ボタンを中央に配置 */
+  gap: 1.5rem; /* ボタンとボタンの間の余白 */
+  flex-wrap: wrap; /* スマホなどで画面幅が狭い場合は自動で折り返す */
+}
+
+/* ===== FOOTER & CONTACT ===== */
+footer {
+  background: #282e33;
+  color: var(--white-color);
+  padding: 4rem 2rem 1rem;
+  text-align: center;
+}
+.footer-content {
+  max-width: 600px;
+  margin: 0 auto 3rem;
+}
+.contact-form label {
+  display: block;
+  text-align: left;
+  margin: 1rem 0 0.5rem;
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  font-family: "Noto Sans JP", sans-serif;
+}
+.btn-submit {
+  background-color: var(--accent-color);
+  color: var(--white-color);
+  border: none;
+  padding: 1rem 2rem;
+  margin-top: 2rem;
+  cursor: pointer;
+  font-weight: 700;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+.btn-submit:hover {
+  background-color: #505b66;
+}
+.copyright {
+  padding-top: 1rem;
+  font-size: 0.9rem;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  h2 {
+    font-size: 2rem;
+  }
+  .work-item,
+  .work-item.reverse {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .work-image-container {
+    gap: 0.5rem;
+  }
+  .nav-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    margin-top: 0;
+  }
+  .about-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .menu {
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    border-radius: 0;
+    text-align: center;
+    padding: 10px 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  /* スマホではメニューの文字色を白で統一 */
+  .menu a {
+    margin: 0 10px;
+    color: var(--white-color);
+  }
+  .menu a::after {
+    background-color: var(--white-color);
+  }
+  .layout-image-large .work-description,
+  .layout-image-large .work-image-container {
+    flex: 1;
+  }
+}
+
+/* ===== Works List Page Styles ===== */
+.works-list-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 10rem; /* 上の余白を調整 */
+  background-color: transparent; /* ← この行を追加！ */
+}
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.work-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.work-card {
+  background-color: var(--white-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.work-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.work-card:hover img {
+  filter: grayscale(0); /* ホバー時にカラーに戻す */
+}
+
+.work-card img {
+  width: 100%;
+  /* height: 250px; */ /* ← この行を削除またはコメントアウトします */
+  aspect-ratio: 1 / 1; /* ← この行を追加！(アスペクト比を1:1に) */
+  object-fit: cover; /* ← これはそのまま残します */
+  filter: grayscale(100%); /* ← この行を追加 */
+  transition: filter 0.4s ease; /* ← この行を追加 */
+}
+
+.work-card-info {
+  padding: 1.5rem;
+}
+
+.work-card-info h4 {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+}
+
+.work-card-info p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .works-grid {
+    grid-template-columns: 1fr;
+  }
+  .works-list-section {
+    padding: 4rem 1rem;
+  }
+}
+
+/* ===== 下層ページのヘッダー ===== */
+.page-header {
+  width: 100%;
+  padding: 1rem 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+.page-header .menu {
+  position: static; /* fixedを解除 */
+  background: none;
+  text-align: center;
+}
+/* TOPページでは下層ページ用のヘッダーを非表示 */
+body:not(.logo-works-page):not(.flyer-works-page) .page-header {
+  /* bodyにクラスがない場合をTOPと見なす */
+  display: none;
+}
+/* 下層ページではヒーロー内のメニューを非表示 */
+.logo-works-page .hero .menu,
+.flyer-works-page .hero .menu {
+  display: none;
+}
+/* TOPページのヒーロー内のメニュー文字色を白に戻す */
+.hero .menu a {
+  color: var(--white-color);
+}
+.hero .menu a::after {
+  background-color: var(--white-color);
+}
+
+/* ===== 下層ページのページタイトル ===== */
+.page-title {
+  padding: 2rem 2rem 2rem; /* ヘッダーの高さ分、上を空ける */
+  text-align: center;
+  border-bottom: 3px solid #eee;
+}
+.page-title h1 {
+  font-size: 4rem;
+}
+
+/* ===== Other Works Navigation ===== */
+.other-works-navigation {
+  background-color: var(--white-color);
+  padding: 3rem 3rem;
+  text-align: center;
+}
+
+.other-works-navigation h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.other-works-container {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  flex-wrap: wrap; /* スマホ表示で折り返す */
+}
+
+/* カード全体のスタイル */
+.other-work-card {
+  display: block;
+  flex: 1;
+  max-width: 400px;
+  min-width: 280px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-decoration: none;
+  background-color: var(--white-color);
+  color: var(--main-text-color);
+  transition: all 0.3s;
+  overflow: hidden; /* 角丸を画像にも適用するため */
+}
+
+.other-work-card:hover {
+  border-color: var(--accent-color);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(209, 163, 163, 0.2);
+}
+
+.other-work-card:hover img {
+  filter: grayscale(0); /* ホバー時にカラーに戻す */
+}
+
+/* 画像を囲む部分のスタイル */
+.other-work-image-wrapper {
+  width: 100%;
+  height: 220px; /* 画像の高さを指定 */
+  background-color: #f0f0f0; /* 画像読み込み中の背景色 */
+}
+
+.other-work-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 画像をラッパーいっぱいに、比率を保って表示 */
+  filter: grayscale(100%); /* ← この行を追加 */
+  transition: filter 0.4s ease; /* ← この行を追加 */
+}
+
+/* テキスト部分のスタイル */
+.other-work-info {
+  padding: 1.5rem;
+}
+
+.other-work-info h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+}
+
+.other-work-info p {
+  margin: 0;
+  color: #777;
+  font-weight: bold;
+}
+
+/* ===== Work Detail Page Styles ===== */
+.work-detail {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 10rem 2rem 6rem; /* ヘッダーの高さ分、上を空ける */
+}
+
+.detail-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 1.5rem;
+}
+
+.detail-header h1 {
+  font-size: 2.5rem;
+}
+
+.detail-main-image {
+  margin-bottom: 4rem;
+}
+
+.detail-main-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.detail-description .description-section {
+  margin-bottom: 3rem;
+}
+
+.detail-description h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: left;
+  border-left: 5px solid var(--accent-color);
+  padding-left: 1rem;
+}
+
+.detail-description p {
+  line-height: 1.8;
+  color: #555;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.info-grid h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  color: var(--accent-color);
+}
+.info-grid p {
+  margin: 0;
+  font-weight: bold;
+}
+
+.back-to-list {
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.back-to-list a {
+  color: var(--main-text-color);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.8rem 2rem;
+  border: 2px solid #ccc;
+  border-radius: 50px;
+  transition: all 0.3s;
+}
+/* (ご提示のコードの最後の部分) */
+.back-to-list a:hover {
+  background-color: var(--main-text-color);
+  color: var(--white-color);
+  border-color: var(--main-text-color); /* 枠線の色も変更 */
+}
+
+/* ===== SCROLL REVEAL ANIMATIONS ===== */
+/* JavaScriptと連携して、スクロール時に要素をふわっと表示させるためのクラス */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== RESPONSIVE DESIGN (Continued) ===== */
+@media (max-width: 768px) {
+  /* ... (既存のレスポンシブ設定は省略) ... */
+
+  /* ===== Work Detail Page on Mobile ===== */
+  .work-detail {
+    padding: 8rem 1.5rem 4rem; /* モバイル用に余白を調整 */
+  }
+  .detail-header h1 {
+    font-size: 1.8rem;
+  }
+  .detail-description h2 {
+    font-size: 1.5rem;
+  }
+  .detail-main-image {
+    margin-bottom: 2.5rem;
+  }
+  .info-grid {
+    grid-template-columns: 1fr; /* 1列にする */
+    gap: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* ===== Smaller Smartphone Adjustments ===== */
+  body {
+    font-size: 15px;
+  }
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+  }
+  section {
+    padding: 4rem 1.5rem;
+  }
+  .hero-content h1 {
+    font-size: 3.5rem;
+  }
+  .hero-content p {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+  }
+  .contact-form input,
+  .contact-form textarea,
+  .btn-submit {
+    font-size: 1rem;
+  }
+}
+
+/* ===== HAMBURGER MENU (for Mobile) ===== */
+/* ハンバーガーメニューのボタン本体（JavaScriptで操作） */
+.hamburger-btn {
+  display: none; /* デフォルトでは非表示 */
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 2000;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* ボタンの中の三本線 */
+.hamburger-btn span {
+  display: block;
+  width: 30px;
+  height: 3px;
+  background-color: var(--white-color); /* TOPページでのデフォルト色 */
+  margin: 6px auto;
+  transition: all 0.4s;
+  border-radius: 2px;
+}
+
+/* ハンバーガーメニューが開いた時のボタンのスタイル（バツ印） */
+.hamburger-btn.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.hamburger-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger-btn.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* モバイル用のナビゲーションメニュー本体 */
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  left: 100%; /* 初期状態では画面の外 */
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(25, 25, 25, 0.98);
+  z-index: 1900;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: left 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.mobile-nav.active {
+  left: 0; /* アクティブになったら画面内に表示 */
+}
+
+.mobile-nav a {
+  color: var(--white-color);
+  text-decoration: none;
+  font-size: 2rem;
+  margin: 2rem 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s 0.3s, transform 0.5s 0.3s;
+}
+
+/* メニューが開いた時にリンクをアニメーションさせる */
+.mobile-nav.active a {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* リンクが順番に表示されるようにディレイを設定 */
+.mobile-nav.active a:nth-child(1) {
+  transition-delay: 0.3s;
+}
+.mobile-nav.active a:nth-child(2) {
+  transition-delay: 0.4s;
+}
+.mobile-nav.active a:nth-child(3) {
+  transition-delay: 0.5s;
+}
+.mobile-nav.active a:nth-child(4) {
+  transition-delay: 0.6s;
+}
+
+/* ===== フライヤー一覧ページ専用の画像スタイル ===== */
+.flyer-works-page .work-card img {
+  /* A4用紙の縦横比（縦長）に設定 */
+  aspect-ratio: 210 / 297;
+
+  /* ★フライヤーは全体が見えるようにcontainを推奨 */
+  object-fit: contain;
+
+  /* 余白ができてしまう場合は白で埋める */
+  background-color: var(--white-color);
+}
+
+/* ===== ホームページ一覧ページ専用の画像スタイル ===== */
+.homepage-works-page .work-card img {
+  aspect-ratio: 16 / 10; /* 横長の比率に変更 */
+  object-fit: cover;
+  background-color: #333; /* PC画面の背景が暗い場合、余白を黒っぽくする */
+}
+.homepage-works-page .works-grid {
+  /* このページだけ2列で表示 */
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* ===== モバイル表示でメニューを切り替え ===== */
+@media (max-width: 768px) {
+  /* 既存のPC用メニューを非表示に */
+  .menu {
+    display: none;
+  }
+  .page-header .menu {
+    display: none;
+  }
+  /* ハンバーガーボタンを表示 */
+  .hamburger-btn {
+    display: block;
+  }
+  /* 下層ページではハンバーガーの色を黒に */
+  body:not(.home) .hamburger-btn span {
+    background-color: var(--main-text-color);
+  }
+  /* 下層ページで開いたメニューボタンは白のまま */
+  body:not(.home) .hamburger-btn.active span {
+    background-color: var(--white-color);
+  }
+}

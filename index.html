@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      body {
+        opacity: 1;
+        transition: opacity 1s ease;
+      }
+      body.fade-out {
+        opacity: 0;
+      }
+      #bg-video {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translateX(-50%) translateY(-50%);
+        z-index: -1; /* 文字の背面に配置 */
+      }
+
+      /* 文字のコンテナを画面全体に広げ、中身を中央揃えにする設定 */
+      .title-content {
+        /* 画面全体に広げる */
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh; /* 画面の高さ100% */
+
+        /* 中身を縦・横方向ともに中央に配置 */
+        display: flex;
+        flex-direction: column; /* h1とpを縦に並べる */
+        justify-content: center;
+        align-items: center;
+
+        /* 文字色を白にする */
+        color: #282e33;
+      }
+
+      /* 文字の見た目を調整（お好みで変更してください） */
+      .title-content h1 {
+        font-size: 5rem;
+        margin: 0;
+        font-weight: 700;
+      }
+      .title-content p {
+        font-size: 1.5rem;
+        margin-top: 0.5rem;
+        letter-spacing: 3px;
+      }
+    </style>
+    <script>
+      function goToMainPage() {
+        document.body.classList.add("fade-out");
+        setTimeout(function () {
+          window.location.href = "main.html";
+        }, 1000); // 1秒間フェードしてから遷移
+      }
+
+      setTimeout(goToMainPage, 3000); // 5秒後にフェード付きで遷移
+    </script>
+  </head>
+  <body>
+    <video autoplay muted id="bg-video">
+      <source src="top-background.mp4" type="video/mp4" />
+      お使いのブラウザは動画に対応していません。
+    </video>
+
+    <div class="title-content">
+      <h1>Satomi Azuma</h1>
+      <p>portfolio</p>
+    </div>
+  </body>
+</html>

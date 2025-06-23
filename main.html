@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Satomi Azuma Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero-content">
+        <h1>Satomi Azuma</h1>
+        <p>Portfolio</p>
+      </div>
+      <nav class="menu">
+        <a href="index.html">Top</a>
+        <a href="#work">Work</a>
+        <a href="#about">About Me</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <video autoplay muted loop id="bg-video">
+        <source src="main-background.mp4" type="video/mp4" />
+        お使いのブラウザは動画に対応していません。
+      </video>
+
+      <section id="work" class="work-section">
+        <h2>Work</h2>
+
+        <article id="logo-slider" class="work-item">
+          <div class="work-description">
+            <div class="work-title-wrapper">
+              <h3>Logo Design</h3>
+              <a href="logo-works.html" class="view-all-link"
+                >一覧を見る &gt;</a
+              >
+            </div>
+            <p>
+              【実績】<br />・サロンロゴ<br />・カフェロゴ<br />・企業ロゴ<br />・クラブチームロゴ<br /><br />
+              【使用ツール】<br />・Illustrator<br />・Photoshop
+            </p>
+            <div id="logo-description-area" class="description-area"></div>
+          </div>
+          <div class="work-image-container">
+            <button
+              type="button"
+              class="nav-arrow prev-arrow"
+              aria-label="前の画像へ"
+            >
+              &lt;
+            </button>
+            <div class="image-box">
+              <img
+                src="image/Logo/MyBeauty.jpeg"
+                alt="ロゴデザイン 1"
+                class="slide-image"
+              />
+            </div>
+            <button
+              type="button"
+              class="nav-arrow next-arrow"
+              aria-label="次の画像へ"
+            >
+              &gt;
+            </button>
+          </div>
+        </article>
+
+        <article id="flyer-slider" class="work-item reverse layout-image-large">
+          <div class="work-description">
+            <div class="work-title-wrapper">
+              <h3>Flyer Design</h3>
+              <a href="flyer-works.html" class="view-all-link"
+                >一覧を見る &gt;</a
+              >
+            </div>
+            <p>
+              【実績】<br />・脱門サロンキャンペーンチラシ<br />・インスタグラム広告用画像<br />・メニュー表<br />・宣伝チラシ<br />・美容室キャンペーンチラシ<br /><br />
+              【使用ツール】<br />・Illustrator<br />・Photoshop
+            </p>
+            <div id="flyer-description-area" class="description-area"></div>
+          </div>
+          <div class="work-image-container">
+            <button
+              type="button"
+              class="nav-arrow prev-arrow"
+              aria-label="前の画像へ"
+            >
+              &lt;
+            </button>
+            <div class="image-box">
+              <img
+                src="image/Flyer/REVISEFIT.jpeg"
+                alt="フライヤーデザイン 1"
+                class="slide-image"
+              />
+            </div>
+            <button
+              type="button"
+              class="nav-arrow next-arrow"
+              aria-label="次の画像へ"
+            >
+              &gt;
+            </button>
+          </div>
+        </article>
+
+        <article id="homepage-slider" class="work-item">
+          <div class="work-description">
+            <div class="work-title-wrapper">
+              <h3>Home Page</h3>
+              <a href="homepage-works.html" class="view-all-link"
+                >一覧を見る &gt;</a
+              >
+            </div>
+            <p>
+              【実績】<br />・エステサロンサイト<br />・ポートフォリオサイト<br /><br />
+              【使用ツール】<br />・Wix<br />・Visual Studio Code
+            </p>
+            <div id="homepage-description-area" class="description-area"></div>
+          </div>
+          <div class="work-image-container">
+            <button
+              type="button"
+              class="nav-arrow prev-arrow"
+              aria-label="前の画像へ"
+            >
+              &lt;
+            </button>
+            <div class="image-box">
+              <img
+                src="image/CHERRY BLOSSOM.png"
+                alt="ホームページデザイン 1"
+                class="slide-image"
+              />
+            </div>
+            <button
+              type="button"
+              class="nav-arrow next-arrow"
+              aria-label="次の画像へ"
+            >
+              &gt;
+            </button>
+          </div>
+        </article>
+      </section>
+
+      <section id="about" class="about-section">
+        <h2>About Me</h2>
+        <div class="about-content">
+          <img
+            src="image/Profile.JPG"
+            alt="Satomi Azuma Profile Picture"
+            class="profile-pic-about"
+          />
+          <div class="about-text">
+            <h3>Satomi Azuma</h3>
+            <p>
+              1996年 埼玉生まれ
+              <br />
+              現在はIT業界でSES営業として勤務し、エンジニアの提案・マッチング業務を行っています。<br />
+              日々、多くの技術者や開発現場と関わる中で「自分もものづくりに関わりたい」という思いが強まり、Webデザイナーへの転身を決意しました。<br />
+              未経験ながらも、独学でデザインやコーディングを学び、実績としてポートフォリオを制作。今後はユーザーに寄り添うデザインと、ビジネス視点を兼ね備えたWebクリエイターを目指しています。
+            </p>
+            <h4>Skills</h4>
+            <p>HTML / CSS / JavaScript / Photoshop / Illustrator / Figma</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact">
+      <div class="contact-simple">
+        <h4>Contact</h4>
+        <p class="sp-only">
+          お仕事のご依頼・ご相談は、下記よりお気軽にご連絡ください。
+        </p>
+
+        <div class="contact-buttons-wrapper">
+          <a
+            href="mailto:info.azuworks@gmail.com?subject=ポートフォリオからのお問い合わせ"
+            class="contact-button"
+          >
+            メールでのお問い合わせ
+          </a>
+          <a
+            href="https://coconala.com/mypage/user?ref=common_header_user"
+            class="contact-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ココナラで依頼する
+          </a>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 Satomi Azuma</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
